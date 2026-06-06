@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Team Photo Upload</title>
+    <link rel="icon" type="image/png" href="./assets/favicon.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Outfit:wght@500;600;700;800&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="background-decor">
+        <div class="glow-orb orb-1"></div>
+        <div class="glow-orb orb-2"></div>
+    </div>
+
+    <div class="container">
+        <div class="card" id="uploadCard" data-state="upload">
+
+            <!-- Card Header -->
+            <div class="card-header" id="cardHeader">
+                <h1>Upload Your Photo</h1>
+                <p>Please upload your professional, high-quality photo.</p>
+            </div>
+
+            <!-- Hidden File Input -->
+            <input type="file" id="file" accept="image/*" style="display: none;">
+
+            <!-- 1. Upload Screen State -->
+            <div class="state-section section-upload" id="sectionUpload">
+                <div class="upload-area" id="uploadArea">
+                    <div class="upload-icon-wrapper">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                            stroke="currentColor" class="icon-svg">
+                            <path stroke-linecap="round" stroke-linejoin="round"
+                                d="M12 16.5V9.75m0 0l3 3m-3-3l-3 3M6.75 19.5a4.5 4.5 0 01-1.41-8.775 5.25 5.25 0 0110.233-2.33 3 3 0 013.758 3.848A3.752 3.752 0 0118 19.5H6.75z" />
+                        </svg>
+                    </div>
+                    <h3>Drag & drop your photo</h3>
+                    <p>or <span class="browse-link">browse files</span> from your device</p>
+                    <span class="upload-hint">Supports JPEG, PNG, WEBP (Max 10MB)</span>
+                </div>
+            </div>
+
+            <!-- 2. Preview Screen State -->
+            <div class="state-section section-preview" id="sectionPreview">
+                <div class="preview-container">
+                    <div class="preview-image-wrapper">
+                        <img id="previewImage" alt="Upload Preview">
+                    </div>
+                    <div class="file-details">
+                        <div class="file-details-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                                stroke="currentColor" class="detail-icon-svg">
+                                <path stroke-linecap="round" stroke-linejoin="round"
+                                    d="M2.25 15.75l5.159-5.159a2.25 2.25 0 013.182 0l5.159 5.159m-1.5-1.5l1.409-1.409a2.25 2.25 0 013.182 0l2.9 2.9m-18 0V4.5A2.25 2.25 0 014.5 2.25h15a2.25 2.25 0 012.25 2.25v13.5m-18 0h16.5" />
+                            </svg>
+                        </div>
+                        <div class="file-info">
+                            <p class="file-name" id="fileName">filename.jpg</p>
+                            <p class="file-meta" id="fileMeta">0 KB</p>
+                        </div>
+                    </div>
+                    <div class="action-buttons">
+                        <button id="uploadBtn" class="btn btn-primary">
+                            <span>Upload Photo</span>
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2"
+                                stroke="currentColor" class="btn-icon">
+                                <path stroke-linecap="round" stroke-linejoin="round"
+                                    d="M6 12L3.269 3.126A59.768 59.768 0 0121.485 12 59.77 59.77 0 013.27 20.876L5.999 12zm0 0h7.5" />
+                            </svg>
+                        </button>
+                        <button id="cancelBtn" class="btn btn-secondary">Remove</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 3. Uploading Screen State -->
+            <div class="state-section section-uploading" id="sectionUploading">
+                <div class="uploading-container">
+                    <div class="spinner-container">
+                        <div class="spinner"></div>
+                        <div class="spinner-glow"></div>
+                    </div>
+                    <h3>Uploading Photo</h3>
+                    <p>Sending file securely. Please don't close this page.</p>
+                    <div class="progress-bar-container">
+                        <div class="progress-bar-fill" id="progressBarFill"></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 4. Success Screen State -->
+            <div class="state-section section-success" id="sectionSuccess">
+                <div class="success-container">
+                    <div class="success-badge-wrapper">
+                        <div class="success-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="3"
+                                stroke="currentColor" class="success-icon-svg">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" />
+                            </svg>
+                        </div>
+                        <div class="success-pulse"></div>
+                    </div>
+                    <h2>Upload Successful!</h2>
+                    <p>Thank you. Your photo has been submitted.</p>
+
+                    <div class="success-thumbnail-wrapper">
+                        <img id="successThumbnail" alt="Uploaded photo thumbnail">
+                    </div>
+
+                    <button id="reuploadBtn" class="btn btn-secondary">Upload Another Photo</button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- Toast Notification container -->
+    <div id="toast" class="toast"></div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
