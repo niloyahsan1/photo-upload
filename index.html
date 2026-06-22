@@ -30,7 +30,7 @@
             </div>
 
             <!-- Hidden File Input -->
-            <input type="file" id="file" accept="image/*" style="display: none;">
+            <input type="file" id="file" accept="image/*" multiple style="display: none;">
 
             <!-- 1. Upload Screen State -->
             <div class="state-section section-upload" id="sectionUpload">
@@ -52,7 +52,7 @@
             <div class="state-section section-preview" id="sectionPreview">
                 <div class="preview-container">
                     <div class="preview-image-wrapper">
-                        <img id="previewImage" alt="Upload Preview">
+                        <div id="previewGallery" class="preview-gallery"></div>
                     </div>
                     <div class="file-details">
                         <div class="file-details-icon">
